@@ -4,21 +4,21 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.careydevelopment.mozmetrics.authenticator.Authenticator;
-import com.careydevelopment.mozmetrics.response.UrlResponse;
 import com.careydevelopment.mozmetrics.service.URLMetricsService;
-import com.google.gson.Gson;
+import com.careydevelopment.mozmetrics.url.UrlReaderException;
 
 @RestController
 public class FetchBasicMetricsController {
 	
-	private static final Logger LOGGER = Logger.getLogger(FetchBasicMetricsController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(FetchBasicMetricsController.class);
  
     @RequestMapping("/fetchBasicMetrics")
     public String fetchBasicMetrics(@RequestParam(value="domain", required=true) String domain, Model model) {
@@ -45,14 +45,17 @@ public class FetchBasicMetricsController {
 		
 		LOGGER.info("running service");
 		
-		URLMetricsService urlMetricsService = new URLMetricsService(authenticator);
-		String response = urlMetricsService.getUrlMetrics(domain);
-		LOGGER.info(response);
-		/*Gson gson = new Gson();
-		UrlResponse res = gson.fromJson(response, UrlResponse.class);
-		LOGGER.info(res);
-		  */  	
-        return response;
+		String response = "";
+		
+		try {
+			URLMetricsService urlMetricsService = new URLMetricsService(authenticator);
+			response = urlMetricsService.getUrlMetrics(domain);
+			LOGGER.info(response);
+		} catch (UrlReaderException ue) {
+			ue.printStackTrace();
+		}
+		
+		return response;
     }
 
 }

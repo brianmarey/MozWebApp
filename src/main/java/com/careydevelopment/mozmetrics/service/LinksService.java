@@ -5,6 +5,7 @@ import java.net.URLEncoder;
 
 import com.careydevelopment.mozmetrics.authenticator.Authenticator;
 import com.careydevelopment.mozmetrics.url.BasicConnectionUtil;
+import com.careydevelopment.mozmetrics.url.UrlReaderException;
 
 /**
  * 
@@ -46,11 +47,11 @@ public class LinksService
 	 * 
 	 * @see #getLinks(String, String, String, String, int, int, int)
 	 */
-	public String getLinks(String objectURL, String scope, String filters, String sort, BigInteger col)
+	public String getLinks(String objectURL, String scope, String filters, String sort, BigInteger col) throws UrlReaderException
 	{
 		return getLinks(objectURL, scope, filters, sort, col, -1, -1);
 	}
-	public String getLinks(String objectURL, String scope, String filters, String sort, long col) { return getLinks(objectURL, scope, filters, sort, BigInteger.valueOf(col)); }
+	public String getLinks(String objectURL, String scope, String filters, String sort, long col) throws UrlReaderException { return getLinks(objectURL, scope, filters, sort, BigInteger.valueOf(col)); }
 	
 	/**
 	 * This method returns a set of links to a page or domain.
@@ -65,7 +66,7 @@ public class LinksService
 	 * @return
 	 */
 	public String getLinks(String objectURL, String scope, String filters, String sort, BigInteger col, int offset, int limit)
-	{
+	throws UrlReaderException {
 		String urlToFetch = "http://lsapi.seomoz.com/linkscape/links/" + URLEncoder.encode(objectURL) + "?" + authenticator.getAuthenticationStr();
 		
 		if(scope != null)
@@ -97,7 +98,7 @@ public class LinksService
 		
 		return response;
 	}
-	public String getLinks(String objectURL, String scope, String filters, String sort, long col, int offset, int limit) { return getLinks(objectURL, scope, filters, sort, BigInteger.valueOf(col), offset, limit); }
+	public String getLinks(String objectURL, String scope, String filters, String sort, long col, int offset, int limit) throws UrlReaderException { return getLinks(objectURL, scope, filters, sort, BigInteger.valueOf(col), offset, limit); }
 
 	/**
 	 * @param authenticator the authenticator to set

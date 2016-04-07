@@ -2,7 +2,6 @@ package com.careydevelopment.mozmetrics.url;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -12,7 +11,12 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class UrlReader {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(UrlReader.class);
 
 	private Link url;
 	
@@ -37,7 +41,7 @@ public class UrlReader {
 		  if (link !=null) {
 			  if (link.toLowerCase().startsWith("https")) {
 				  link = "http" + link.substring(5, link.length());
-				  System.err.println ("new link is " +link);
+				  LOGGER.info ("new link is " +link);
 			  }
 		  }
 
@@ -49,14 +53,14 @@ public class UrlReader {
 		  PageInfo pageInfo = new PageInfo();
 		  URLConnection urlConnection = null;
 
-
+		  boolean fail = false;
+		  
 		  try {
 			  	String l = url.getToLink();
 			  	//System.err.println(l);
 			  	
 			    // create a url object
 			    URL urlCon = new URL(l);
-
 
 			    // create a urlconnection object
 				if (l.startsWith("https")) {
@@ -107,7 +111,8 @@ public class UrlReader {
 						pageInfo.setExpires(getSingleValueFromResponse("Expires", map));
 					}
 			  	} else {
-			  		System.err.println("not getting anything!");
+			  		LOGGER.warn("not getting anything!");
+			  		fail = true;
 			  	}
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -126,6 +131,10 @@ public class UrlReader {
 			  }
 		  }
 
+		  if (fail) {
+			  throw new UrlReaderException("Problem reading page!");
+		  }
+		  
 		  return pageInfo;
 	  }
 
