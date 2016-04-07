@@ -7,6 +7,7 @@ function beginCheck(localhost) {
 	var url = thisHost + ":8080/MozMetrics/fetchLinksMetrics?domain="+domain;
 
 	$('#entryForm').hide();
+	$('#spinner').show();
 	
 	$.get(url, processLinksMetrics);
 }
@@ -14,16 +15,44 @@ function beginCheck(localhost) {
 function processLinksMetrics(data) {
 	//alert(data);
 	
-	//{"apo":608092.7,"fmrp":3.7812910847062042,"fmrr":5.22927443276084e-10,"pda":20.296778766386748,"ueid":2,"uid":475,"ulc":1454241315,"umrp":5.481724213183218,"umrr":3.3557280892252386e-10,"upa":25.688152456000367,"us":200,"ut":"Blog - Brian M. Carey","uu":"brianmcarey.com/"}
+	$('#spinner').hide();
+	
+	if (data == "error") {
+		$("#anotherRunButtonDiv").show();
+		$("#errorSection").show();
+		
+	} else {
+		$("#results").show();
+		$("#buttonDiv").show();
 
-	var json = JSON.parse(data);
-	
-	alert(json.length);
-	
+		var json = JSON.parse(data);
+		var linksBlock = "";
+		
+		if (json && json.length > 0) {
+			var title = json[0].luut;
+			var url = json[0].luuu;
+			$("#url").html(url);
+			$("#title").html(url);
+		}
+		
+		for (var i=0;i<json.length;i++) {
+			var obj = json[i];
+			var url = obj.uu;
+			linksBlock+="<p>";
+			linksBlock+=url;
+			linksBlock+"</p>"
+		}
+
+		$("#allLinks").html(linksBlock);		
+		$("#anotherRunButtonDiv").show();
+	}
 }
 
 function anotherRun() {
 	$("#results").hide();
 	$('#entryForm').show();
 	$('#website').val("");
+	$('#buttonDiv').show();
+	$("#errorSection").hide();
+	$("#anotherRunButtonDiv").hide();
 }

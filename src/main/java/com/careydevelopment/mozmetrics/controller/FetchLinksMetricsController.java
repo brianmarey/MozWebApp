@@ -15,7 +15,6 @@ import com.careydevelopment.mozmetrics.authenticator.Authenticator;
 import com.careydevelopment.mozmetrics.service.LinksService;
 import com.careydevelopment.mozmetrics.url.UrlReaderException;
 import com.careydevelopment.mozmetrics.util.LinksConstants;
-import com.google.gson.Gson;
 
 @RestController
 public class FetchLinksMetricsController {
@@ -52,11 +51,12 @@ public class FetchLinksMetricsController {
 		try {
 			LinksService linksService = new LinksService();
 			linksService.setAuthenticator(authenticator);
-			response = linksService.getLinks(domain, LinksConstants.LINKS_SCOPE_PAGE_TO_DOMAIN, 
+			response = linksService.getLinks(domain, LinksConstants.LINKS_SCOPE_PAGE_TO_PAGE, 
 					null, LinksConstants.LINKS_SORT_PAGE_AUTHORITY, LinksConstants.LINKS_COL_URL, 0, 140);
 			LOGGER.info(response);
 		} catch (UrlReaderException ue) {
 			ue.printStackTrace();
+			response = "error";
 		}
 		
         return response;

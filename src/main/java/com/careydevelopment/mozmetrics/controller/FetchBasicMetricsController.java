@@ -53,6 +53,7 @@ public class FetchBasicMetricsController {
 			LOGGER.info(response);
 		} catch (UrlReaderException ue) {
 			ue.printStackTrace();
+			response = "error";
 		}
 		
 		return response;
