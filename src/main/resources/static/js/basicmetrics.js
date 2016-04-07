@@ -37,5 +37,10 @@ function processBasicMetrics(data) {
 	$("#mozRankRaw").html(mozRankRaw);
 	$("#pageAuthority").html(pageAuthority);
 	$("#domainAuthority").html(domainAuthority);
-	
+}
+
+function anotherRun() {
+	$("#results").hide();
+	$('#entryForm').show();
+	$('#website').val("");
 }

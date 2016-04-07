@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Moz Metrics : URL Metrics</title>
+    <title>Moz Metrics : Link Metrics</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <script th:src="@{/js/jquery.js}"></script>
-    <script th:src="@{/js/basicmetrics.js}"></script>     
+    <script th:src="@{/js/linksmetrics.js}"></script>     
     <script th:src="@{/css/jquery-ui/jquery-ui.js}"></script>  
     
     <link th:href="@{/css/jquery-ui/jquery-ui.css}" rel="stylesheet"/>
@@ -26,7 +26,7 @@
 <div th:include="fragments/header :: header">...</div>
 <input type="hidden" th:value="${localhost}" id="localhost" name="localhost" />
 
-<h1>URL Metrics</h1>
+<h1>Link Metrics</h1>
 
 <div id="entryForm">
 <div class="ui-widget form-section">
@@ -73,7 +73,7 @@
 <div style="height:25px">&nbsp;</div>
 
 <div id = "buttonDiv" class="ui-widget form-section">
-<button id="anotherRunButton" onclick="anotherRun()">Another Run</button>
+<button id="anotherRunButton" onclick="anotherRun">Another Run</button>
 </div>
 </div>
 
