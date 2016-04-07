@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Moz Metrics : Basic Metrics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/basicmetrics.js}"></script>     
+    <script th:src="@{/css/jquery-ui/jquery-ui.js}"></script>  
+    
+    <link th:href="@{/css/jquery-ui/jquery-ui.css}" rel="stylesheet"/>
+    <link th:href="@{/css/sitestyle.css}" rel="stylesheet"/>
+
+	<style>
+		.resultText {
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight:normal;
+			font-size:12pt;
+			padding: 5px 5px 5px 5px;
+			border: 1px solid black;
+		}
+	</style>    
+</head>
+<body>
+<div th:include="fragments/header :: header">...</div>
+<input type="hidden" th:value="${localhost}" id="localhost" name="localhost" />
+
+<h1>Basic Metrics</h1>
+
+<div id="entryForm">
+<div class="ui-widget form-section">
+<div class="form-label">URL:</div>
+<div><span class="form-label">http://</span><input id="website" style="width:250px"/></div>
+</div>
+
+<div id = "buttonDiv" class="ui-widget form-section">
+<button id="checkButton" onclick="beginCheck(localhost)">Check Metrics</button>
+</div>
+</div>
+
+<div id="results" style="display:none">
+<div class="form-label">Page Title:</div>
+<div class="resultText" id="siteTitle"></div>
+<div style="height:25px">&nbsp;</div>
+
+<div class="form-label">URL:</div>
+<div class="resultText" id="siteUrl"></div>
+<div style="height:25px">&nbsp;</div>
+
+<div class="form-label"># of Equity Links:</div>
+<div class="resultText" id="equityLinks"></div>
+<div style="height:25px">&nbsp;</div>
+
+<div class="form-label"># of All Links:</div>
+<div class="resultText" id="allLinks"></div>
+<div style="height:25px">&nbsp;</div>
+
+<div class="form-label">Moz Rank (10-Point Scale):</div>
+<div class="resultText" id="mozRank10"></div>
+<div style="height:25px">&nbsp;</div>
+
+<div class="form-label">Moz Rank (Raw):</div>
+<div class="resultText" id="mozRankRaw"></div>
+<div style="height:25px">&nbsp;</div>
+
+<div class="form-label">Page Authority:</div>
+<div class="resultText" id="pageAuthority"></div>
+<div style="height:25px">&nbsp;</div>
+
+<div class="form-label">Domain Authority:</div>
+<div class="resultText" id="domainAuthority"></div>
+<div style="height:25px">&nbsp;</div>
+
+</div>
+
+<div th:include="fragments/footer :: footer">...</div>
+</body>
+<script>
+var localhost = $('#localhost').val();
+</script>
+</html>
