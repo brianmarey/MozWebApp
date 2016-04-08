@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.careydevelopment.mozmetrics.authenticator.Authenticator;
 import com.careydevelopment.mozmetrics.service.URLMetricsService;
 import com.careydevelopment.mozmetrics.url.UrlReaderException;
+import com.careydevelopment.mozmetrics.util.LinksConstants;
 
 @RestController
 public class FetchBasicMetricsController {
@@ -50,6 +51,9 @@ public class FetchBasicMetricsController {
 		try {
 			URLMetricsService urlMetricsService = new URLMetricsService(authenticator);
 			response = urlMetricsService.getUrlMetrics(domain);
+			
+			//esponse = linksService.getLinks(domain, LinksConstants.LINKS_SCOPE_PAGE_TO_PAGE, 
+			//		null, LinksConstants.LINKS_SORT_PAGE_AUTHORITY, LinksConstants.LINKS_COL_URL, 0, 140);
 			LOGGER.info(response);
 		} catch (UrlReaderException ue) {
 			ue.printStackTrace();
