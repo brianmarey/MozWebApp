@@ -16,6 +16,7 @@ public class BasicMetricsController {
     @RequestMapping("/basicmetrics")
     public String basicmetrics(Model model) {
     	model.addAttribute("localhost",LocalHostHelper.getLocalHostPrefix());
+    	model.addAttribute("toolsActive", "active");
     	
         return "basicmetrics";
     }

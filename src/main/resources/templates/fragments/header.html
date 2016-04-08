@@ -41,10 +41,10 @@
                                     </button>
                                     <div class="navbar-collapse nav-collapse collapse">
                                         <ul class="nav">
-                                            <li>
+                                            <li th:class="${homeActive}">
                                                 <a href="./">Home</a>
                                             </li>
-                                            <li class="dropdown">
+                                            <li class="dropdown" th:classappend="${toolsActive}">
                                                 <a data-toggle="dropdown" class="dropdown-toggle js-activated" href="#">Tools <i class="fa fa-angle-down"></i></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="./basicmetrics">Domain Metrics</a></li>
