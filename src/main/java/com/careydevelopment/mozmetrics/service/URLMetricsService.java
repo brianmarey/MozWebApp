@@ -5,6 +5,7 @@ import java.net.URLEncoder;
 
 import com.careydevelopment.mozmetrics.authenticator.Authenticator;
 import com.careydevelopment.mozmetrics.url.BasicConnectionUtil;
+import com.careydevelopment.mozmetrics.url.UrlReaderException;
 
 
 /**
@@ -44,7 +45,7 @@ public class URLMetricsService
 	 * 			  col = 0 fetches all the data
 	 * @return
 	 */
-	public String getUrlMetrics(String objectURL, BigInteger col)
+	public String getUrlMetrics(String objectURL, BigInteger col) throws UrlReaderException
 	{
 		
 		String urlToFetch = "http://lsapi.seomoz.com/linkscape/url-metrics/" + URLEncoder.encode(objectURL) + "?" + authenticator.getAuthenticationStr();
@@ -60,7 +61,7 @@ public class URLMetricsService
 		
 		return response;
 	}
-	public String getUrlMetrics(String objectURL, long col) { return getUrlMetrics(objectURL, BigInteger.valueOf(col)); }
+	public String getUrlMetrics(String objectURL, long col) throws UrlReaderException { return getUrlMetrics(objectURL, BigInteger.valueOf(col)); }
 	
 	/**
 	 * 
@@ -71,7 +72,7 @@ public class URLMetricsService
 	 * 
 	 * @see URLMetricsService#getUrlMetrics(String, int)
 	 */
-	public String getUrlMetrics(String objectURL)
+	public String getUrlMetrics(String objectURL) throws UrlReaderException
 	{
 		return getUrlMetrics(objectURL, 0);		
 	}

@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.careydevelopment.mozmetrics.authenticator.Authenticator;
-import com.careydevelopment.mozmetrics.service.URLMetricsService;
+import com.careydevelopment.mozmetrics.service.LinksService;
 import com.careydevelopment.mozmetrics.url.UrlReaderException;
 import com.careydevelopment.mozmetrics.util.LinksConstants;
 
 @RestController
-public class FetchBasicMetricsController {
+public class FetchLinksMetricsController {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(FetchBasicMetricsController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(FetchLinksMetricsController.class);
  
-    @RequestMapping("/fetchBasicMetrics")
-    public String fetchBasicMetrics(@RequestParam(value="domain", required=true) String domain, Model model) {
+    @RequestMapping("/fetchLinksMetrics")
+    public String fetchLinksMetrics(@RequestParam(value="domain", required=true) String domain, Model model) {
 		Properties props = new Properties();
 		
 		try {
@@ -49,18 +49,17 @@ public class FetchBasicMetricsController {
 		String response = "";
 		
 		try {
-			URLMetricsService urlMetricsService = new URLMetricsService(authenticator);
-			response = urlMetricsService.getUrlMetrics(domain);
-			
-			//esponse = linksService.getLinks(domain, LinksConstants.LINKS_SCOPE_PAGE_TO_PAGE, 
-			//		null, LinksConstants.LINKS_SORT_PAGE_AUTHORITY, LinksConstants.LINKS_COL_URL, 0, 140);
+			LinksService linksService = new LinksService();
+			linksService.setAuthenticator(authenticator);
+			response = linksService.getLinks(domain, LinksConstants.LINKS_SCOPE_PAGE_TO_PAGE, 
+					null, LinksConstants.LINKS_SORT_PAGE_AUTHORITY, LinksConstants.LINKS_COL_URL, 0, 140);
 			LOGGER.info(response);
 		} catch (UrlReaderException ue) {
 			ue.printStackTrace();
 			response = "error";
 		}
 		
-		return response;
+        return response;
     }
 
 }

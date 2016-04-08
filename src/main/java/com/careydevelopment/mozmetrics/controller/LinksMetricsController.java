@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.careydevelopment.mozmetrics.util.LocalHostHelper;
 
 @Controller
-public class BasicMetricsController {
+public class LinksMetricsController {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(BasicMetricsController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(LinksMetricsController.class);
  
-    @RequestMapping("/basicmetrics")
-    public String basicmetrics(Model model) {
+    @RequestMapping("/linksmetrics")
+    public String linksmetrics(Model model) {
     	model.addAttribute("localhost",LocalHostHelper.getLocalHostPrefix());
     	
-        return "basicmetrics";
+        return "linksmetrics";
     }
 
 }

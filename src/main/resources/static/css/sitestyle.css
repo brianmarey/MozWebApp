@@ -73,9 +73,35 @@
 	.toplogo {
 	}
 	
-	.tagsArea {
-		width:300px !important;
-		height:100px !important;
+	
+	
+	ul.menu {
+    text-align: justify;
+    width: 350px;
+}
+ul.menu:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+}
+ul.menu:before {
+    content: '';
+    display: block;
+    margin-top: -1.25em;
+}
+li.menu-item {
+    display: inline-block;
+    margin-right: -.25em;
+    position: relative;
+    top: 1.25em;
+}
+	
+	
+	
+	a.menu-link {
+		text-decoration:none;
+		font-weight:bold;
+		font-family: Arial, Helvetica, sans-serif;
 	}
 
 
