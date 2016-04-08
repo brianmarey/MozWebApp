@@ -16,6 +16,7 @@ public class LinksMetricsController {
     @RequestMapping("/linksmetrics")
     public String linksmetrics(Model model) {
     	model.addAttribute("localhost",LocalHostHelper.getLocalHostPrefix());
+    	model.addAttribute("toolsActive", "active");
     	
         return "linksmetrics";
     }

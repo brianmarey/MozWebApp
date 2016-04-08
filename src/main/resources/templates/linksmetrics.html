@@ -5,12 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <script th:src="@{/js/jquery.js}"></script>
     <script th:src="@{/js/linksmetrics.js}"></script>     
-    <script th:src="@{/css/jquery-ui/jquery-ui.js}"></script>  
-    
-    <link th:href="@{/css/jquery-ui/jquery-ui.css}" rel="stylesheet"/>
-    <link th:href="@{/css/sitestyle.css}" rel="stylesheet"/>
 
 	<style>
 		.resultText {
@@ -22,56 +17,69 @@
 		}
 	</style>    
 </head>
-<body>
+<body class="wide">
 <div th:include="fragments/header :: header">...</div>
-<input type="hidden" th:value="${localhost}" id="localhost" name="localhost" />
 
-<h1>Backlink Checker</h1>
-
-<div id="entryForm">
-<div class="ui-widget form-section">
-<div class="form-label">Domain:</div>
-<div><span class="form-label">http://</span><input id="website" style="width:250px"/></div>
-</div>
-
-<div id = "buttonDiv" class="ui-widget form-section">
-<button id="checkButton" onclick="beginCheck(localhost)">Check Metrics</button>
-</div>
-</div>
-
-<div id="spinner" style="display:none">
-<img th:src="@{/images/gears.gif}"/>
-</div>
-
-<div id="results" style="display:none">
-
-<div class="form-label">URL:</div>
-<div class="resultText" id="url"></div>
-<div style="height:25px">&nbsp;</div>
-
-<div class="form-label">Title:</div>
-<div class="resultText" id="title"></div>
-<div style="height:25px">&nbsp;</div>
-
-<div class="form-label">Links:</div>
-<div class="resultText" style="word-wrap:break-word" id="allLinks"></div>
-<div style="height:25px">&nbsp;</div>
-</div>
-
-<div id="errorSection" class="ui-widget form-section" style="display:none">
-	<div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
-		<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-		<strong>ERROR:</strong> Problem reading the data. You might have exceeded your allowed calls for today or there
-		could be a problem with Moz right now.</p>
+    <div id="main-wrapper">
+        <div class="dark-grey">
+            <div class="container">
+            	<div class="row">
+                	<div class="span12">
+                        <div class="page-header">
+							<h1>Backlink Checker</h1>
+						</div>
+						<div>
+							
+							<input type="hidden" th:value="${localhost}" id="localhost" name="localhost" />
+							
+							<div id="entryForm">
+							<div class="ui-widget form-section">
+							<div class="form-label">Domain:</div>
+							<div><span class="form-label">http://</span><input id="website" style="width:250px"/></div>
+							</div>
+							
+							<div id = "buttonDiv" class="ui-widget form-section">
+							<button id="checkButton" onclick="beginCheck(localhost)">Check Metrics</button>
+							</div>
+							</div>
+							
+							<div id="spinner" style="display:none">
+							<img th:src="@{/images/gears.gif}"/>
+							</div>
+							
+							<div id="results" style="display:none">
+							
+							<div class="form-label">URL:</div>
+							<div class="resultText" id="url"></div>
+							<div style="height:25px">&nbsp;</div>
+							
+							<div class="form-label">Title:</div>
+							<div class="resultText" id="title"></div>
+							<div style="height:25px">&nbsp;</div>
+							
+							<div class="form-label">Links:</div>
+							<div class="resultText" style="word-wrap:break-word" id="allLinks"></div>
+							<div style="height:25px">&nbsp;</div>
+							</div>
+							
+							<div id="errorSection" class="ui-widget form-section" style="display:none">
+								<div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+									<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+									<strong>ERROR:</strong> Problem reading the data. You might have exceeded your allowed calls for today or there
+									could be a problem with Moz right now.</p>
+								</div>
+							</div>
+							
+							
+							<div id="anotherRunButtonDiv" style="display:none" class="ui-widget form-section">
+							<button id="anotherRunButton" onclick="anotherRun()">Another Run</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
-
-
-<div id="anotherRunButtonDiv" style="display:none" class="ui-widget form-section">
-<button id="anotherRunButton" onclick="anotherRun()">Another Run</button>
-</div>
-
-
 <div th:include="fragments/footer :: footer">...</div>
 </body>
 <script>

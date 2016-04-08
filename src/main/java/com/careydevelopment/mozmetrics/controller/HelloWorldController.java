@@ -15,7 +15,7 @@ public class HelloWorldController {
     public String hello(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
     	LOGGER.info("\n\nIn hello!!!!\n\n");
         model.addAttribute("name", name);
-        return "greeting";
+        return "home-1";
     }
 
 }

@@ -4,46 +4,70 @@
     <title>Moz Metrics : Home</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-    <script th:src="@{/js/jquery.js}"></script>     
-    <script th:src="@{/css/jquery-ui/jquery-ui.js}"></script>  
-    
-    <link th:href="@{/css/jquery-ui/jquery-ui.css}" rel="stylesheet"/>
-    <link th:href="@{/css/sitestyle.css}" rel="stylesheet"/>
-    
 </head>
-<body>
-<div th:include="fragments/header :: header">...</div>
 
 
-<h1>Moz Metrics</h1>
-
-<div id="introText" style="margin-bottom:20px;width:100%;background-color: #e0ebeb; padding: 5px 5px 5px 5px" class="ui-widget">
-This tool enables you to find the Moz metrics of websites. You'll need to use a Moz token and access ID to use this system. If you
-don't have a token and access ID, you can request them (for free) <a href="https://moz.com/products/api/keys" target="_blank">from Moz.</a> 
-</div>
-<p/>
-<table>
-<thead>
-<tr>
-<th class="ui-widget">Task Name</th>
-<th class="ui-widget">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="ui-widget"><a th:href="@{/basicmetrics}">Domain Metrics</a></td>
-<td class="ui-widget">Retrieves basic metrics (like Page Authority and Domain Authority) about a URL that you provide.</td>
-</tr>
-<tr>
-<td class="ui-widget"><a th:href="@{/linksmetrics}">Backlink Checker</a></td>
-<td class="ui-widget">Provides a list of backlinks for a given domain.</td>
-</tr>
-</tbody>
-</table>
-
+    <body class="wide">
+    <div th:include="fragments/header :: header">...</div>
+    
+    <div id="main-wrapper">
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+           	
+        <div class="dark-grey">
+            <div class="container">
+            	<div class="row">
+                	<div class="span12 text-center">
+                        <div class="page-header">
+			    			<h1>Moz Metrics</h1>
+							<div id="introText">
+							This tool enables you to find the Moz metrics of websites. You'll need to use a Moz token and access ID to use this system. If you
+							don't have a token and access ID, you can request them (for free) <a href="https://moz.com/products/api/keys" target="_blank">from Moz.</a> 
+							</div>
+                        </div>
+                    </div>
+    			</div>
+    			
+    			
+    			            
+                
+                <div class="service-box">
+                    <div class="row">
+                        <div class="span6">
+                            <div class="service-icon-wrap">
+                                <div class="big-icon-wrap pull-left img-circle" style="cursor:pointer" onclick="document.location='./basicmetrics'">
+                                    <i class="fa fa-code fa-2x"></i>
+                                </div>
+                                <div class="service-txt">
+                                <h3><a href="./basicmetrics">Domain Metrics</a></h3>
+                                <p>Checks Moz metrics, such as Domain Authority and Page Authority, of the provided domain name.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="service-icon-wrap">
+                                <div class="big-icon-wrap pull-left img-circle" style="cursor:pointer" onclick="document.location='./linksmetrics'">
+                                    <i class="fa fa-link fa-2x" ></i>
+                                </div>
+                                <div class="service-txt">
+                                <h3><a href="./linksmetrics">Backlink Checker</a></h3>
+                                <p>Provides a list of backlinks for a given domain.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    			
+    			
+			</div>
+		</div>
+	</div>
 
 <div th:include="fragments/footer :: footer">...</div>
+
+
 </body>
 
 </html>
