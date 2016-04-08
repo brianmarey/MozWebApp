@@ -29,7 +29,7 @@
 }
 #cssmenu {
   font-family: Montserrat, sans-serif;
-  background: #333333;
+  background: #2023b5;
 }
 #cssmenu > ul > li {
   float: left;
@@ -133,7 +133,7 @@
   text-decoration: none;
   color: #dddddd;
   font-weight: 400;
-  background: #333333;
+  background: #2023b5;
 }
 #cssmenu ul ul li:last-child > a,
 #cssmenu ul ul li.last-item > a {
@@ -300,7 +300,7 @@
     cursor: pointer;
   }
   #cssmenu .submenu-button.submenu-opened {
-    background: #262626;
+    background: #2023b5;
   }
   #cssmenu ul ul .submenu-button {
     height: 34px;
