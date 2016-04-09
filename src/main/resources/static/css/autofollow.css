@@ -1,4 +1,42 @@
-
+	body{
+		font: "Trebuchet MS", sans-serif;
+		line-height:150%;
+		margin: 50px;
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
 	select {
 		width: 200px;
 	}
@@ -35,35 +73,9 @@
 	.toplogo {
 	}
 	
-	
-	
-	ul.menu {
-    text-align: justify;
-    width: 350px;
-}
-ul.menu:after {
-    content: '';
-    display: inline-block;
-    width: 100%;
-}
-ul.menu:before {
-    content: '';
-    display: block;
-    margin-top: -1.25em;
-}
-li.menu-item {
-    display: inline-block;
-    margin-right: -.25em;
-    position: relative;
-    top: 1.25em;
-}
-	
-	
-	
-	a.menu-link {
-		text-decoration:none;
-		font-weight:bold;
-		font-family: Arial, Helvetica, sans-serif;
+	.tagsArea {
+		width:300px !important;
+		height:100px !important;
 	}
 
 

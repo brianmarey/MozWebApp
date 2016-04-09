@@ -33,12 +33,12 @@
 
 							<input type="hidden" th:value="${localhost}" id="localhost" name="localhost" />
 							<div id="entryForm">
-							<div class="ui-widget form-section">
-							<div class="form-label">Domain:</div>
-							<div><span class="form-label">http://</span><input id="website" style="width:250px"/></div>
+							<div class="form-section">
+							<label>Domain:</label>
+							<div><label>http://</label><input type="text" id="website" style="width:250px"/></div>
 							</div>
 							
-							<div id = "buttonDiv" class="ui-widget form-section">
+							<div id = "buttonDiv" class="form-section">
 							<button id="checkButton" onclick="beginCheck(localhost)">Check Metrics</button>
 							</div>
 							</div>
@@ -48,31 +48,31 @@
 							</div>
 							
 							<div id="results" style="display:none">
-							<div class="form-label">Page Title:</div>
+							<label>Page Title:</label>
 							<div class="resultText" id="siteTitle"></div>
 							<div style="height:25px">&nbsp;</div>
 							
-							<div class="form-label">URL:</div>
+							<label>URL:</label>
 							<div class="resultText" id="siteUrl"></div>
 							<div style="height:25px">&nbsp;</div>
 							
-							<div class="form-label"># of Equity Links:</div>
+							<label># of Equity Links:</label>
 							<div class="resultText" id="equityLinks"></div>
 							<div style="height:25px">&nbsp;</div>
 							
-							<div class="form-label"># of All Links:</div>
+							<label># of All Links:</label>
 							<div class="resultText" id="allLinks"></div>
 							<div style="height:25px">&nbsp;</div>
 							
-							<div class="form-label">Moz Rank (10-Point Scale):</div>
+							<label>Moz Rank (10-Point Scale):</label>
 							<div class="resultText" id="mozRank10"></div>
 							<div style="height:25px">&nbsp;</div>
 							
-							<div class="form-label">Page Authority:</div>
+							<label>Page Authority:</label>
 							<div class="resultText" id="pageAuthority"></div>
 							<div style="height:25px">&nbsp;</div>
 							
-							<div class="form-label">Domain Authority:</div>
+							<label>Domain Authority:</label>
 							<div class="resultText" id="domainAuthority"></div>
 							<div style="height:25px">&nbsp;</div>
 							</div>
