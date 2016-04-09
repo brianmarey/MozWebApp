@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {
-        "com.careydevelopment.twitterautomation.jpa"
+        "com.careydevelopment.mozmetrics.jpa"
 })
 @EnableTransactionManagement
 class PersistenceContext {
@@ -54,7 +54,7 @@ class PersistenceContext {
 	        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 	        entityManagerFactoryBean.setDataSource(dataSource);
 	        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-	        entityManagerFactoryBean.setPackagesToScan("com.careydevelopment.twitterautomation.jpa.entity");
+	        entityManagerFactoryBean.setPackagesToScan("com.careydevelopment.mozmetrics.jpa.entity");
 	 
 	        Properties jpaProperties = new Properties();
 
